@@ -285,8 +285,8 @@ func getPageHtml(page string, outputFilePath string, serverComponentNames []stri
 		i++
 	}
 
-	pageHtml = strings.ReplaceAll(pageHtml, "{{ url }}", "localhost")
-	pageHtml = strings.ReplaceAll(pageHtml, "{{ api }}", "https://api.login.timlohrer.de/api")
+	pageHtml = strings.ReplaceAll(pageHtml, "{{ api }}", os.Getenv("URL"))
+	pageHtml = strings.ReplaceAll(pageHtml, "{{ url }}", os.Getenv("API"))
 
 	return pageHtml
 }
