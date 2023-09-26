@@ -257,6 +257,8 @@ func main() {
 		c.String(http.StatusOK, pageHtml)
 	})
 
+	router.Static("/assets", "./public/assets")
+
 	err = router.Run(":" + port)
 	if err != nil {
 		panic(err)
@@ -285,8 +287,8 @@ func getPageHtml(page string, outputFilePath string, serverComponentNames []stri
 		i++
 	}
 
-	pageHtml = strings.ReplaceAll(pageHtml, "{{ api }}", os.Getenv("URL"))
-	pageHtml = strings.ReplaceAll(pageHtml, "{{ url }}", os.Getenv("API"))
+	pageHtml = strings.ReplaceAll(pageHtml, "{{ url }}", os.Getenv("URL"))
+	pageHtml = strings.ReplaceAll(pageHtml, "{{ api }}", os.Getenv("API"))
 
 	return pageHtml
 }
