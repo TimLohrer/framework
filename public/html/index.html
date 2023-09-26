@@ -1,0 +1,36 @@
+{{{ header }}}
+
+<body>
+    <header id="header">
+        <div class="headerBranding">
+            <img class="headerIcon" src="/assets/favicon.ico" alt="icon" height="5vh" width="5vh">
+            <h2 class="headerTitle">Rcon Client - Web Dashboard</h2>
+        </div>
+        <button class="headerAddServerButton" onclick="openAddServerGui()">Add Server</button>
+    </header>
+    <div id="serverInfo"></div>
+    <div id="serverConsole">
+        <div id="consoleHistory"></div>
+        <div id="consoleInput"></div>
+    </div>
+    <div id="addServerGui" class="addServerGui">
+        <div id="addServerGuiContent" class="addServerGuiContent">
+            <div class="addServerGuiContentForm">
+                <h2 class="title">Add Server</h2>
+                <input type="text" id="addServerAdressInput" placeholder="Server Adress (e.g. localhost)">
+                <input type="text" id="addServerPortInput" placeholder="Server Port (e.g. 25575)">
+                <button class="addButton" onclick="addServer()"><img class="addButtonIcon" src="/assets/icons/add.png"
+                        alt="addServerIcon">Add Server</button>
+            </div>
+            <button class="closeButton" onclick="closeAddServerGui()"><img class="closeButtonIcon"
+                    src="/assets/icons/x.png" alt="closeIcon"></button>
+        </div>
+    </div>
+    <!-- <button onclick="createClient()">Connect</button>
+    <input type="text" id="input" placeholder="command">
+    <button
+        onclick="rconClients[0].sendMessage('RUN_RCON_COMMAND', `192.168.178.99 25575 test123 ${document.getElementById('input').value}`)">Send</button>
+    <p id="result"></p> -->
+</body>
+
+</html>
