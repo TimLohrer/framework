@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 	"strings"
@@ -267,6 +268,11 @@ func main() {
 
 func getPageHtml(page string, outputFilePath string, serverComponentNames []string, serverComponents []string) string {
 	filePath := outputFilePath + page + ".html"
+
+	err := os.Chmod(filePath, 0777)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	pageBytes, err := os.ReadFile(filePath)
 	if err != nil {
