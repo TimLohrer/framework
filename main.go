@@ -59,8 +59,8 @@ func main() {
 				for _, arg := range strings.Split(componentHtml, "{{ ")[1:] {
 					arg = strings.Split(arg, " }}")[0]
 					componentHtml = strings.ReplaceAll(componentHtml, "{{ "+arg+" }}", "${"+arg+"}")
-					if !stringInList(args, arg) && !stringInList(args, strings.Split(arg, ".")[0]) {
-						args = append(args, arg)
+					if !stringInList(args, strings.Split(arg, ".")[0]) {
+						args = append(args, strings.Split(arg, ".")[0])
 					}
 				}
 				component += componentHtml
@@ -68,26 +68,12 @@ func main() {
 				componentCss := ""
 				if cssErr == nil && string(componentCssBytes) != "" {
 					componentCss = string(componentCssBytes)
-					for _, arg := range strings.Split(componentCss, "{{ ")[1:] {
-						arg = strings.Split(arg, " }}")[0]
-						componentCss = strings.ReplaceAll(componentCss, "{{ "+arg+" }}", "${"+arg+"}")
-						if !stringInList(args, arg) && !stringInList(args, strings.Split(arg, ".")[0]) {
-							args = append(args, arg)
-						}
-					}
 					componentsCss += "<style component=\"" + componentName + "\" client>\n" + componentCss + "\n</style>\n"
 				}
 
 				componentJs := ""
 				if jsErr == nil && string(componentJsBytes) != "" {
 					componentJs = string(componentJsBytes)
-					for _, arg := range strings.Split(componentJs, "{{ ")[1:] {
-						arg = strings.Split(arg, " }}")[0]
-						componentJs = strings.ReplaceAll(componentJs, "{{ "+arg+" }}", "${"+arg+"}")
-						if !stringInList(args, arg) && !stringInList(args, strings.Split(arg, ".")[0]) {
-							args = append(args, arg)
-						}
-					}
 					componentsJs += "<script component=\"" + componentName + "\" client>\n" + componentJs + "\n</script>\n"
 				}
 
